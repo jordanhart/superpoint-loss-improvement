@@ -77,10 +77,6 @@ datasets/ ($DATA_DIR)
     - [MS-COCO 2014 link](http://cocodataset.org/#download)
 - HPatches
     - [HPatches link](http://icvl.ee.ic.ac.uk/vbalnt/hpatches/hpatches-sequences-release.tar.gz)
-- KITTI Odometry
-    - [KITTI website](http://www.cvlibs.net/datasets/kitti/raw_data.php)
-    - [download link](http://www.cvlibs.net/download.php?file=raw_data_downloader.zip)
-
 
 
 ## run the code
@@ -115,7 +111,7 @@ python train4.py train_joint configs/superpoint_coco_train_heatmap.yaml superpoi
 - set your batch size (originally 1)
 - refer to: 'train_tutorial.md'
 
-### 4) Export/ Evaluate the metrics on HPatches
+### 2) Export/ Evaluate the metrics on HPatches
 - Use pretrained model or specify your model in config file
 - ```./run_export.sh``` will run export then evaluation.
 
@@ -152,21 +148,12 @@ jupyter notebook
 notebooks/visualize_hpatches.ipynb 
 ```
 
-## Updates (year.month.day)
-- 2020.08.05: 
-  - Update pytorch nms from (https://github.com/eric-yyjau/pytorch-superpoint/pull/19)
-  - Update and test KITTI dataloader and labels on google drive (should be able to fit the KITTI raw format)
-  - Update and test SIFT evaluate at step 5.
 
 ## Known problems
 - ~~test step 5: evaluate on SIFT~~
 - Export COCO dataset in low resolution (240x320) instead of high resolution (480x640).
 - Due to step 1 was done long time ago. We are still testing it again along with step 2-4. Please refer to our pretrained model or exported labels. Or let us know how the whole pipeline works.
 - Warnings from tensorboard.
-
-## Work in progress
-- Release notebooks with unit testing.
-- Dataset: ApolloScape/ TUM.
 
 ## Citations
 Please cite the original paper.
@@ -195,5 +182,3 @@ This implementation is developed by [Sayantan Chattopadhyay] (https://github.com
 Again the work is based on Tensorflow implementation by [Rémi Pautrat](https://github.com/rpautrat) and [Paul-Edouard Sarlin](https://github.com/Skydes) and official [SuperPointPretrainedNetwork](https://github.com/MagicLeapResearch/SuperPointPretrainedNetwork) and pytorch implementation by [You-Yi Jau] (https://github.com/eric-yyjau/pytorch-superpoint) 
 Thanks to Daniel DeTone for help during the implementation.
 
-## Posts
-[What have I learned from the implementation of deep learning paper?](https://medium.com/@eric.yyjau/what-have-i-learned-from-the-implementation-of-deep-learning-paper-365ee3253a89)
