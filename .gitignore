@@ -1,5 +1,6 @@
-datasets/
+datasets/COCO/
+datasets/HPatches/
 logs\\*
 logs/
 runs_*/
-__pycache__
+__pycache__/
