@@ -1,4 +1,4 @@
-# SuperPoint Loss Improvement
+# HyperPoint: SuperPoint Loss Improvement
 
 This is a PyTorch implementation of "SuperPoint: Self-Supervised Interest Point Detection and Description." Daniel DeTone, Tomasz Malisiewicz, Andrew Rabinovich. ArXiv 2018. This code is partially based on the tensorflow implementation https://github.com/rpautrat/SuperPoint and pytorch implementation https://github.com/eric-yyjau/pytorch-superpoint
 
@@ -149,7 +149,7 @@ Please cite the original paper.
 
 
 # Credits
-This implementation is developed by [Sayantan Chattopadhyay] (https://github.com/schattop6) and [Jordan Hart] (https://github.com/jordanhart). Please contact Sayantan Chattopadhyay for any problems. 
+This implementation is developed by [Sayantan Chattopadhyay] (https://github.com/schattop6), [Jordan Hart] (https://github.com/jordanhart) and [Sanjay Rathore]. Please contact Sayantan Chattopadhyay for any problems. 
 Again the work is based on Tensorflow implementation by [Rémi Pautrat](https://github.com/rpautrat) and [Paul-Edouard Sarlin](https://github.com/Skydes) and official [SuperPointPretrainedNetwork](https://github.com/MagicLeapResearch/SuperPointPretrainedNetwork) and pytorch implementation by [You-Yi Jau] (https://github.com/eric-yyjau/pytorch-superpoint) 
 Thanks to Daniel DeTone for help during the implementation.
 
