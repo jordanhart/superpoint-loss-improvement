@@ -151,5 +151,4 @@ Please cite the original paper.
 # Credits
 This implementation is developed by [Sayantan Chattopadhyay] (https://github.com/schattop6), [Jordan Hart] (https://github.com/jordanhart) and [Sanjay Rathore]. Please contact Sayantan Chattopadhyay for any problems. 
 Again the work is based on Tensorflow implementation by [Rémi Pautrat](https://github.com/rpautrat) and [Paul-Edouard Sarlin](https://github.com/Skydes) and official [SuperPointPretrainedNetwork](https://github.com/MagicLeapResearch/SuperPointPretrainedNetwork) and pytorch implementation by [You-Yi Jau] (https://github.com/eric-yyjau/pytorch-superpoint) 
-Thanks to Daniel DeTone for help during the implementation.
 
