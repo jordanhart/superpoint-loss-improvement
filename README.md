@@ -1,11 +1,6 @@
-# pytorch-superpoint
+# SuperPoint Loss Improvement
 
-This is a PyTorch implementation of  "SuperPoint: Self-Supervised Interest Point Detection and Description." Daniel DeTone, Tomasz Malisiewicz, Andrew Rabinovich. [ArXiv 2018](https://arxiv.org/abs/1712.07629).
-This code is partially based on the tensorflow implementation
-https://github.com/rpautrat/SuperPoint.
-
-Please be generous to star this repo if it helps your research.
-This repo is a bi-product of our paper [deepFEPE(IROS 2020)](https://github.com/eric-yyjau/pytorch-deepFEPE.git).
+This is a PyTorch implementation of "SuperPoint: Self-Supervised Interest Point Detection and Description." Daniel DeTone, Tomasz Malisiewicz, Andrew Rabinovich. ArXiv 2018. This code is partially based on the tensorflow implementation https://github.com/rpautrat/SuperPoint and pytorch implementation https://github.com/eric-yyjau/pytorch-superpoint
 
 ## Differences between our implementation and original paper
 - *Descriptor loss*: We tested descriptor loss using different methods, including dense method (as paper but slightly different) and sparse method. We notice sparse loss can converge more efficiently with similar performance. The default setting here is sparse method.
@@ -98,52 +93,7 @@ datasets/ ($DATA_DIR)
     
 `tensorboard --logdir=./runs/ [--host | static_ip_address] [--port | 6008]`
 
-### 1) Training MagicPoint on Synthetic Shapes
-```
-python train4.py train_base configs/magicpoint_shapes_pair.yaml magicpoint_synth --eval
-```
-you don't need to download synthetic data. You will generate it when first running it.
-Synthetic data is exported in `./datasets`. You can change the setting in `settings.py`.
-
-### 2) Exporting detections on MS-COCO / kitti
-This is the step of homography adaptation(HA) to export pseudo ground truth for joint training.
-- make sure the pretrained model in config file is correct
-- make sure COCO dataset is in '$DATA_DIR' (defined in setting.py)
-<!-- - you can export hpatches or coco dataset by editing the 'task' in config file -->
-- config file:
-```
-export_folder: <'train' | 'val'>  # set export for training or validation
-```
-#### General command:
-```
-python export.py <export task>  <config file>  <export folder> [--outputImg | output images for visualization (space inefficient)]
-```
-#### export coco - do on training set 
-```
-python export.py export_detector_homoAdapt configs/magicpoint_coco_export.yaml magicpoint_synth_homoAdapt_coco
-```
-#### export coco - do on validation set 
-- Edit 'export_folder' to 'val' in 'magicpoint_coco_export.yaml'
-```
-python export.py export_detector_homoAdapt configs/magicpoint_coco_export.yaml magicpoint_synth_homoAdapt_coco
-```
-#### export kitti
-- config
-  - check the 'root' in config file 
-  - train/ val split_files are included in `datasets/kitti_split/`.
-```
-python export.py export_detector_homoAdapt configs/magicpoint_kitti_export.yaml magicpoint_base_homoAdapt_kitti
-```
-<!-- #### export tum
-- config
-  - check the 'root' in config file
-  - set 'datasets/tum_split/train.txt' as the sequences you have
-```
-python export.py export_detector_homoAdapt configs/magicpoint_tum_export.yaml magicpoint_base_homoAdapt_tum
-``` -->
-
-
-### 3) Training Superpoint on MS-COCO/ KITTI
+### 1) Training Superpoint on MS-COCO/ KITTI
 You need pseudo ground truth labels to traing detectors. Labels can be exported from step 2) or downloaded from [link](https://drive.google.com/drive/folders/1nnn0UbNMFF45nov90PJNnubDyinm2f26?usp=sharing). Then, as usual, you need to set config file before training.
 - config file
   - root: specify your labels root
@@ -160,10 +110,6 @@ python train4.py <train task> <config file> <export folder> --eval
 #### COCO
 ```
 python train4.py train_joint configs/superpoint_coco_train_heatmap.yaml superpoint_coco --eval --debug
-```
-#### kitti
-```
-python train4.py train_joint configs/superpoint_kitti_train_heatmap.yaml superpoint_kitti --eval --debug
 ```
 
 - set your batch size (originally 1)
@@ -187,15 +133,6 @@ python export.py export_descriptor  configs/magicpoint_repeatability_heatmap.yam
 python evaluation.py logs/superpoint_hpatches_test/predictions --repeatibility --outputImg --homography --plotMatching
 ```
 
-### 5) Export/ Evaluate repeatability on SIFT
-- Refer to another project: [Feature-preserving image denoising with multiresolution filters](https://github.com/eric-yyjau/image_denoising_matching)
-```shell
-# export detection, description, matching
-python export_classical.py export_descriptor configs/classical_descriptors.yaml sift_test --correspondence
-
-# evaluate (use 'sift' flag)
-python evaluation.py logs/sift_test/predictions --sift --repeatibility --homography 
-```
 
 
 - specify the pretrained model
@@ -204,8 +141,7 @@ python evaluation.py logs/sift_test/predictions --sift --repeatibility --homogra
 ### Current best model
 - *COCO dataset*
 ```logs/superpoint_coco_heat2_0/checkpoints/superPointNet_170000_checkpoint.pth.tar```
-- *KITTI dataset*
-```logs/superpoint_kitti_heat2_0/checkpoints/superPointNet_50000_checkpoint.pth.tar```
+
 ### model from magicleap
 ```pretrained/superpoint_v1.pth```
 
@@ -255,8 +191,8 @@ Eprint = {arXiv:2007.15122},
 ```
 
 # Credits
-This implementation is developed by [You-Yi Jau](https://github.com/eric-yyjau) and [Rui Zhu](https://github.com/Jerrypiglet). Please contact You-Yi for any problems. 
-Again the work is based on Tensorflow implementation by [Rémi Pautrat](https://github.com/rpautrat) and [Paul-Edouard Sarlin](https://github.com/Skydes) and official [SuperPointPretrainedNetwork](https://github.com/MagicLeapResearch/SuperPointPretrainedNetwork).
+This implementation is developed by [Sayantan Chattopadhyay] (https://github.com/schattop6) and [Jordan Hart] (https://github.com/jordanhart). Please contact Sayantan Chattopadhyay for any problems. 
+Again the work is based on Tensorflow implementation by [Rémi Pautrat](https://github.com/rpautrat) and [Paul-Edouard Sarlin](https://github.com/Skydes) and official [SuperPointPretrainedNetwork](https://github.com/MagicLeapResearch/SuperPointPretrainedNetwork) and pytorch implementation by [You-Yi Jau] (https://github.com/eric-yyjau/pytorch-superpoint) 
 Thanks to Daniel DeTone for help during the implementation.
 
 ## Posts
