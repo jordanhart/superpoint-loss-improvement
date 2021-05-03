@@ -1,7 +1,7 @@
 """This is the main training interface using heatmap trick
 
-Author: You-Yi Jau, Rui Zhu
-Date: 2019/12/12
+Author: Sayantan Chattopadhyay, Jordan Hart, Sanjay Rathore
+Date: 2021/04/04
 """
 
 import numpy as np
@@ -107,45 +107,7 @@ class Train_model_heatmap(Train_model_frontend):
         self.printImportantConfig()
         pass
 
-    ### loadModel inherited from Train_model_frontend
-    # def loadModel(self):
-    #     """
-    #     load model from name and params
-    #     init or load optimizer
-    #     :return:
-    #     """
-    #     model = self.config["model"]["name"]
-    #     params = self.config["model"]["params"]
-    #     print("model: ", model)
-    #     net = modelLoader(model=model, **params).to(self.device)
-    #     logging.info("=> setting adam solver")
-    #     optimizer = self.adamOptim(net, lr=self.config["model"]["learning_rate"])
-    #
-    #     n_iter = 0
-    #     ## new model or load pretrained
-    #     if self.config["retrain"] == True:
-    #         logging.info("New model")
-    #         pass
-    #     else:
-    #         path = self.config["pretrained"]
-    #         mode = "" if path[:-3] == ".pth" else "full"
-    #         logging.info("load pretrained model from: %s", path)
-    #         net, optimizer, n_iter = pretrainedLoader(
-    #             net, optimizer, n_iter, path, mode=mode, full_path=True
-    #         )
-    #         logging.info("successfully load pretrained model from: %s", path)
-    #
-    #     def setIter(n_iter):
-    #         if self.config["reset_iter"]:
-    #             logging.info("reset iterations to 0")
-    #             n_iter = 0
-    #         return n_iter
-    #
-    #     self.net = net
-    #     self.optimizer = optimizer
-    #     self.n_iter = setIter(n_iter)
-    #     pass
-
+   
     def detector_loss(self, input, target, mask=None, loss_type="softmax"):
         """
         # apply loss on detectors, default is softmax
@@ -161,28 +123,7 @@ class Train_model_heatmap(Train_model_frontend):
         :return: normalized loss
             tensor
         """
-#         if loss_type == "l2":
-#             loss_func = nn.MSELoss(reduction="mean")
-#             loss = loss_func(input, target)
-#         elif loss_type == "softmax":
-#             loss_func_BCE = nn.BCELoss(reduction='none').cuda()
-#             loss = loss_func_BCE(nn.functional.softmax(input, dim=1), target)
-#             loss = (loss.sum(dim=1) * mask).sum()
-#             loss = loss / (mask.sum() + 1e-10)
-#         return loss
-    
-#         if loss_type == "l2":
-#             loss_func = nn.MSELoss(reduction="mean")
-#             loss = loss_func(input, target)
-#         elif loss_type == "softmax":
-#             self.alpha = 0.25
-#             self.gamma = 2
-#             BCE_loss = F.binary_cross_entropy(F.softmax(input, dim=1), target)
-#             pt = torch.exp(-BCE_loss)
-#             focal_loss = self.alpha * (1-pt) ** self.gamma * BCE_loss
-#             loss = (focal_loss * mask).sum()
-#             loss = loss / (mask.sum() + 1e-10)
-#         return loss
+
     
         if loss_type == "l2":
             loss_func = nn.MSELoss(reduction="mean")
@@ -414,10 +355,7 @@ class Train_model_heatmap(Train_model_frontend):
 #             heatmap_warp, scale_factor=(self.cell_size, self.cell_size), mode="bilinear"
 #         )
         
-        #heatmap_warp = nn.functional.interpolate(
-        #     heatmap_warp, size = mode="bilinear"
-         #)
-             
+       
         self.heatmap_loss_weight =  0.1 #Setting to 0 to disable heatmap loss #0.1
         
         heatmap_orig = heatmap_orig.view(heatmap_orig.shape[0],-1)
