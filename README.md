@@ -52,27 +52,7 @@ datasets/ ($DATA_DIR)
 |   |-- i_ajuntament
 |   `-- ...
 `-- synthetic_shapes  # will be automatically created
-`-- KITTI (accumulated folders from raw data)
-|   |-- 2011_09_26_drive_0020_sync
-|   |   |-- image_00/
-|   |   `-- ...
-|   |-- ...
-|   `-- 2011_09_28_drive_0001_sync
-|   |   |-- image_00/
-|   |   `-- ...
-|   |-- ...
-|   `-- 2011_09_29_drive_0004_sync
-|   |   |-- image_00/
-|   |   `-- ...
-|   |-- ...
-|   `-- 2011_09_30_drive_0016_sync
-|   |   |-- image_00/
-|   |   `-- ...
-|   |-- ...
-|   `-- 2011_10_03_drive_0027_sync
-|   |   |-- image_00/
-|   |   `-- ...
-```
+
 - MS-COCO 2014 
     - [MS-COCO 2014 link](http://cocodataset.org/#download)
 - HPatches
@@ -89,7 +69,7 @@ datasets/ ($DATA_DIR)
     
 `tensorboard --logdir=./runs/ [--host | static_ip_address] [--port | 6008]`
 
-### 1) Training Superpoint on MS-COCO/ KITTI
+### 1) Training Superpoint on MS-COCO
 You need pseudo ground truth labels to traing detectors. Labels can be exported from step 2) or downloaded from [link](https://drive.google.com/drive/folders/1nnn0UbNMFF45nov90PJNnubDyinm2f26?usp=sharing). Then, as usual, you need to set config file before training.
 - config file
   - root: specify your labels root
