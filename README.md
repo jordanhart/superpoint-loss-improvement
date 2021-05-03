@@ -58,7 +58,7 @@ datasets/ ($DATA_DIR)
 - HPatches
     - [HPatches link](http://icvl.ee.ic.ac.uk/vbalnt/hpatches/hpatches-sequences-release.tar.gz)
 
-
+```
 ## run the code
 - Notes:
     - Start from any steps (1-4) by downloading some intermediate results
@@ -130,7 +130,6 @@ notebooks/visualize_hpatches.ipynb
 
 
 ## Known problems
-- ~~test step 5: evaluate on SIFT~~
 - Export COCO dataset in low resolution (240x320) instead of high resolution (480x640).
 - Due to step 1 was done long time ago. We are still testing it again along with step 2-4. Please refer to our pretrained model or exported labels. Or let us know how the whole pipeline works.
 - Warnings from tensorboard.
@@ -147,15 +146,7 @@ Please cite the original paper.
 }
 ```
 
-Please also cite our DeepFEPE paper.
-```
-@misc{2020_jau_zhu_deepFEPE,
-Author = {You-Yi Jau and Rui Zhu and Hao Su and Manmohan Chandraker},
-Title = {Deep Keypoint-Based Camera Pose Estimation with Geometric Constraints},
-Year = {2020},
-Eprint = {arXiv:2007.15122},
-}
-```
+
 
 # Credits
 This implementation is developed by [Sayantan Chattopadhyay] (https://github.com/schattop6) and [Jordan Hart] (https://github.com/jordanhart). Please contact Sayantan Chattopadhyay for any problems. 
