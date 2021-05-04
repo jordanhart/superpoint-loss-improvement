@@ -31,6 +31,9 @@ conda create --name py36-sp python=3.6
 conda activate py36-sp
 pip install -r requirements.txt
 pip install -r requirements_torch.txt # install pytorch
+pip uninstall opencv-python
+pip uninstall opencv-contrib-python
+pip install opencv-contrib-python
 ```
 
 ### Path setting
