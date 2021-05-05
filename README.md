@@ -61,6 +61,12 @@ datasets/ ($DATA_DIR)
 - HPatches
     - [HPatches link](http://icvl.ee.ic.ac.uk/vbalnt/hpatches/hpatches-sequences-release.tar.gz)
 
+Remove 25% of training set COCO with commands below in the datasets/ folder
+Zsh 
+n=0; mv COCO_train2014_000000??????.jpg(^e:'((n++%4))':) ../../COCO_OTHER_FOURTH2
+May need to make the COCO_OTHER_FOURTH2 folder with mkdir COCO_OTHER_FOURTH2
+
+
 ```
 ## run the code
 - Notes:
