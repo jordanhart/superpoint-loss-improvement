@@ -34,9 +34,11 @@ pip install -r requirements_torch.txt # install pytorch
 ```
 
 Kept with the original requirements.txt above. If have issues, can uninstall opencvs and install latest opencv-contrib-python
+```
 pip uninstall opencv-python
 pip uninstall opencv-contrib-python
 pip install opencv-contrib-python
+```
 
 
 ### Path setting
