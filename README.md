@@ -31,10 +31,13 @@ conda create --name py36-sp python=3.6
 conda activate py36-sp
 pip install -r requirements.txt
 pip install -r requirements_torch.txt # install pytorch
+```
+
+Kept with the original requirements.txt above. If have issues, can uninstall opencvs and install latest opencv-contrib-python
 pip uninstall opencv-python
 pip uninstall opencv-contrib-python
 pip install opencv-contrib-python
-```
+
 
 ### Path setting
 - paths for datasets ($DATA_DIR), logs are set in `setting.py`
